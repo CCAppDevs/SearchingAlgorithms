@@ -19,13 +19,13 @@ Console.WriteLine();
 
 // search for a number
 stopwatch.Start();
-Console.WriteLine("3 was found at index: " + Algorithms.LinearSearch(largeRandomArr, 3));
+Console.WriteLine("3 was found at index: " + Algorithms.LinearSearch<int>(largeRandomArr, 3));
 stopwatch.Stop();
 DisplayRuntime(stopwatch);
 
 // search for a number
 stopwatch.Start();
-Console.WriteLine("3 was found at index: " + Algorithms.LinearSearch(largeSortedArr, 3));
+Console.WriteLine("3 was found at index: " + Algorithms.LinearSearch<int>(largeSortedArr, 3));
 stopwatch.Stop();
 DisplayRuntime(stopwatch);
 
