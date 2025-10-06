@@ -10,10 +10,6 @@ namespace SearchingAlgorithms
     {
         // Searching Algorithms
 
-        List<int> ints;
-
-        // TODO: Refactor: Make linear search work with other data types
-
         // linear search (naive search)
         public static int LinearSearch<T>(T[] arr, T searchTerm) where T : IComparable<T>
         {
@@ -28,6 +24,37 @@ namespace SearchingAlgorithms
             }
 
             // if not found
+            return -1;
+        }
+
+        // data must be sorted prior to searching
+        // Function: Takes a sorted array, splits it in two and searches both halves recursively for a matching search term
+        public static int BinarySearch<T>(T[] arr, int low, int high, T searchTerm) where T : IComparable<T>
+        {
+            // index of our position? mid? low and high?
+            int mid = low + ((high - low) / 2);
+
+            // base case (did we find it? Equal to)
+            if (arr[mid].Equals(searchTerm))
+            {
+                // we hit base case, return mid
+                return mid;
+            }
+
+            // recursive case (we didnt find it, search recursively)
+            // is it in the left
+            if (arr[mid].CompareTo(searchTerm) > 0)
+            {
+                BinarySearch(arr, low, mid - 1, searchTerm);
+            }
+
+            // is it in the right
+            if (arr[mid].CompareTo(searchTerm) < 0)
+            {
+                BinarySearch(arr, mid + 1, high, searchTerm);
+            }
+
+            // worst case scenario
             return -1;
         }
 

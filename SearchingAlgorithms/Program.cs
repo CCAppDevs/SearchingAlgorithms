@@ -4,28 +4,28 @@ using System.Diagnostics;
 Stopwatch stopwatch = Stopwatch.StartNew();
 
 
-// usage 100 thousand values
-stopwatch.Start();
-int[] largeRandomArr = GenerateRandomArray(1000000000, 1, 1000000000);
-stopwatch.Stop();
-DisplayRuntime(stopwatch);
+//// usage 100 thousand values
+//stopwatch.Start();
+//int[] largeRandomArr = GenerateRandomArray(1000000000, 1, 1000000000);
+//stopwatch.Stop();
+//DisplayRuntime(stopwatch);
 
 stopwatch.Start();
-int[] largeSortedArr = GenerateArray(1000000000, 1);
+int[] largeSortedArr = GenerateArray(10, 1);
 stopwatch.Stop();
 DisplayRuntime(stopwatch);
 
 Console.WriteLine();
 
-// search for a number
-stopwatch.Start();
-Console.WriteLine("3 was found at index: " + Algorithms.LinearSearch<int>(largeRandomArr, 3));
-stopwatch.Stop();
-DisplayRuntime(stopwatch);
+//// search for a number
+//stopwatch.Start();
+//Console.WriteLine("3 was found at index: " + Algorithms.LinearSearch<int>(largeRandomArr, 3));
+//stopwatch.Stop();
+//DisplayRuntime(stopwatch);
 
 // search for a number
 stopwatch.Start();
-Console.WriteLine("3 was found at index: " + Algorithms.LinearSearch<int>(largeSortedArr, 3));
+Console.WriteLine("3 was found at index: " + Algorithms.BinarySearch<int>(largeSortedArr, 0, largeSortedArr.Length - 1, 3));
 stopwatch.Stop();
 DisplayRuntime(stopwatch);
 
@@ -37,6 +37,7 @@ static int[] GenerateArray(int numElements, int start)
     for (int i = 0; i < numElements; i++)
     {
         arr[i] = start + i;
+        //arr[i] = 3;
     }
 
     return arr;
