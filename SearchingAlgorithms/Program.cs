@@ -11,23 +11,26 @@ Stopwatch stopwatch = Stopwatch.StartNew();
 //DisplayRuntime(stopwatch);
 
 stopwatch.Start();
-int[] largeSortedArr = GenerateArray(10, 1);
+int[] largeSortedArr = GenerateArray(1000000000, 1);
 stopwatch.Stop();
 DisplayRuntime(stopwatch);
 
 Console.WriteLine();
 
-//// search for a number
-//stopwatch.Start();
-//Console.WriteLine("3 was found at index: " + Algorithms.LinearSearch<int>(largeRandomArr, 3));
-//stopwatch.Stop();
-//DisplayRuntime(stopwatch);
+// search for a number
+stopwatch.Start();
+Console.WriteLine("2billion was found at index (Binary Search): " + Algorithms.BinarySearch<int>(largeSortedArr, 0, largeSortedArr.Length - 1, 2000000000));
+stopwatch.Stop();
+DisplayRuntime(stopwatch);
+
 
 // search for a number
 stopwatch.Start();
-Console.WriteLine("3 was found at index: " + Algorithms.BinarySearch<int>(largeSortedArr, 0, largeSortedArr.Length - 1, 3));
+Console.WriteLine("2billion was found at index (linear search): " + Algorithms.LinearSearch<int>(largeSortedArr, 2000000000));
 stopwatch.Stop();
 DisplayRuntime(stopwatch);
+
+
 
 // generate random array function
 static int[] GenerateArray(int numElements, int start)

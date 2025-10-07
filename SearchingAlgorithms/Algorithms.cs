@@ -34,25 +34,25 @@ namespace SearchingAlgorithms
             // index of our position? mid? low and high?
             int mid = low + ((high - low) / 2);
 
-            // base case (did we find it? Equal to)
-            if (arr[mid].Equals(searchTerm))
+            if (high >= low)
             {
-                // we hit base case, return mid
-                return mid;
-            }
+                // base case (did we find it? Equal to)
+                if (arr[mid].Equals(searchTerm))
+                {
+                    // we hit base case, return mid
+                    return mid;
+                }
 
-            // recursive case (we didnt find it, search recursively)
-            // is it in the left
-            if (arr[mid].CompareTo(searchTerm) > 0)
-            {
-                BinarySearch(arr, low, mid - 1, searchTerm);
-            }
+                // is it in the left
+                if (arr[mid].CompareTo(searchTerm) > 0)
+                {
+                    return BinarySearch(arr, low, mid - 1, searchTerm);
+                }
 
-            // is it in the right
-            if (arr[mid].CompareTo(searchTerm) < 0)
-            {
-                BinarySearch(arr, mid + 1, high, searchTerm);
+                // is it in the right
+                return BinarySearch(arr, mid + 1, high, searchTerm);
             }
+            
 
             // worst case scenario
             return -1;
