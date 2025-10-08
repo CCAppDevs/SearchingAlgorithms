@@ -1,74 +1,19 @@
 ﻿using SearchingAlgorithms;
-using System.Diagnostics;
 
-Stopwatch stopwatch = Stopwatch.StartNew();
+// these have to be created here
+Node node1 = new("Toast");
+Node node2 = new("is");
+// put super here
+Node node3 = new("GREAT!");
 
+// this has to be created here
+Node anotherNode = new("SUPER");
 
-//// usage 100 thousand values
-//stopwatch.Start();
-//int[] largeRandomArr = GenerateRandomArray(1000000000, 1, 1000000000);
-//stopwatch.Stop();
-//DisplayRuntime(stopwatch);
+node1.next = node2;
+node2.next = node3;
 
-stopwatch.Start();
-int[] largeSortedArr = GenerateArray(1000000000, 1);
-stopwatch.Stop();
-DisplayRuntime(stopwatch);
+node2.next = anotherNode;
+anotherNode.next = node3;
 
-Console.WriteLine();
+Console.WriteLine("The sentance reads: " + node1.data + " " + node1.next.data + " " + node1.next.next.data + " " + node1.next.next.next.data);
 
-// search for a number
-stopwatch.Start();
-Console.WriteLine("2billion was found at index (Binary Search): " + Algorithms.BinarySearch<int>(largeSortedArr, 0, largeSortedArr.Length - 1, 2000000000));
-stopwatch.Stop();
-DisplayRuntime(stopwatch);
-
-
-// search for a number
-stopwatch.Start();
-Console.WriteLine("2billion was found at index (linear search): " + Algorithms.LinearSearch<int>(largeSortedArr, 2000000000));
-stopwatch.Stop();
-DisplayRuntime(stopwatch);
-
-
-
-// generate random array function
-static int[] GenerateArray(int numElements, int start)
-{
-    int[] arr = new int[numElements];
-
-    for (int i = 0; i < numElements; i++)
-    {
-        arr[i] = start + i;
-        //arr[i] = 3;
-    }
-
-    return arr;
-}
-
-// generate random array function
-static int[] GenerateRandomArray(int numElements, int min, int max)
-{
-    Random rnd = new Random();
-    int[] arr = new int[numElements];
-
-    // process?
-    for (int i = 0; i < numElements; i++)
-    {
-        arr[i] = rnd.Next(min, max);
-    }
-
-    return arr;
-}
-
-static void DisplayRuntime(Stopwatch stopwatch)
-{
-    TimeSpan ts = stopwatch.Elapsed;
-
-    // Format and display the TimeSpan value.
-    string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-        ts.Hours, ts.Minutes, ts.Seconds,
-        ts.Milliseconds / 10);
-    Console.WriteLine("Time Taken: " + elapsedTime);
-    stopwatch.Reset();
-}
