@@ -18,6 +18,12 @@ namespace SearchingAlgorithms
             head = null;
         }
 
+        public CustomLinkedList(string value)
+        {
+            head = new Node(value);
+        }
+
+
         // add a new node to the end list
         public void AddToBack(string value)
         {
@@ -43,10 +49,72 @@ namespace SearchingAlgorithms
             pos.next = obj;
         }
 
+        // add to front
+        public void AddToFront(string value)
+        {
+            Node oldHead = head; // bookmarking it
+            head = new Node(value); // replacing it
+            head.next = oldHead; // putting the rest of the list back in line
+        }
+
+        // insert alphabetically
+        public void Add(string value)
+        {
+            Node pos = head;
+            Node obj = new Node(value);
+
+            // nothing in the list, add at front
+            if (pos == null)
+            {
+                head = obj;
+                return;
+            }
+
+            // position somewhere in the middle, walk the list until we find where to insert
+            while (pos.data.CompareTo(obj.data) > 0)
+            {
+                pos = pos.next;
+            }
+
+            obj.next = pos.next;
+            pos.next = obj;
+
+
+            //// position is at the end of the list, add at back
+            //if (pos.next == null)
+            //{
+            //    pos.next = obj;
+            //    return;
+            //}
+
+        }
+
+        public override string? ToString()
+        {
+            string result = "";
+            Node pos = head;
+
+            // head is empty, return nothing
+            if (pos == null)
+            {
+                return result;
+            }
+
+            // head has contents, loop over it, printing the data
+            while (pos != null)
+            {
+                result += pos.data;
+                pos = pos.next;
+            }
+
+            return result;
+        }
+
         // add something to the list at a specific position
 
         // remove something from the list at a specific position
 
         // to string the list
+
     }
 }
