@@ -60,24 +60,60 @@ namespace SearchingAlgorithms
         // insert alphabetically
         public void Add(string value)
         {
+            // nothing in the list
+            // new item should be inserted at the front
+            // item should be inserted somewhere in the middle
+            // item should be inserted at the end of the list
+
             Node pos = head;
             Node obj = new Node(value);
 
-            // nothing in the list, add at front
-            if (pos == null)
+            // nothing in the list or item comes before the first item in the list, add at front
+            if (pos == null || pos.data.CompareTo(obj.data) > 0)
             {
+                obj.next = head;
                 head = obj;
                 return;
             }
 
-            // position somewhere in the middle, walk the list until we find where to insert
-            while (pos.data.CompareTo(obj.data) > 0)
-            {
-                pos = pos.next;
-            }
 
-            obj.next = pos.next;
-            pos.next = obj;
+            // walk along the list
+                // does the item go here?
+                    // new item 
+                // does the item go later?
+
+
+
+
+
+
+            // item should be inserted in the middle
+            // item should be inserted at the end of the list
+            //while (pos.next != null)
+            //{
+            //    // if (2.compareTo(4) >= 0)
+            //    if (pos.data.CompareTo(obj.data) == 0)
+            //    {
+            //        obj.next = pos.next;
+            //        pos.next = obj;
+            //        return;
+            //    }
+
+            //    if (pos.data.CompareTo(obj.data) < 0)
+            //    {
+            //        pos = pos.next;
+            //    }
+            //}
+
+
+            //// multiple items in the list. position somewhere in the middle, walk the list until we find where to insert
+            //while (pos != null && pos.data.CompareTo(obj.data) < 0)
+            //{
+            //    pos = pos.next;
+            //}
+
+            //obj.next = pos.next;
+            //pos.next = obj;
 
 
             //// position is at the end of the list, add at back

@@ -2,8 +2,9 @@
 
 CustomLinkedList myBBQ = new CustomLinkedList();
 
-myBBQ.Add("Toast");
-myBBQ.Add("Tacos");
-myBBQ.Add("Chicken Satay");
+myBBQ.Add("2");
+myBBQ.Add("1");
+myBBQ.Add("3");
+myBBQ.Add("4");
 
 Console.WriteLine(myBBQ.ToString());
